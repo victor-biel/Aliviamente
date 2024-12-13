@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Aliviamente</string>
+    <string name="textOlá">Olá,</string>
+    <string name="textViewIntrodução">eu estou aqui para apoiar você em sua jornada em busca de bem-estar psicológico.</string>
+    <string name="btn">Cadastro</string>
+    <string name="textConta">Já possui uma conta?</string>
+    <string name="textClique">Clique aqui!</string>
+    <string name="login">Login</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="btn_continuar">Continuar</string>
+    <string name="hint_email">Insira seu e-mail</string>
+    <string name="hint_email2">E-mail</string>
+    <string name="hint_password">Insira sua password</string>
+    <string name="hint_password2">Password</string>
+    <string name="hint_conf_password">Confimar password</string>
+    <string name="esquecer_password">Esqueceu sua password?</string>
+    <string name="paciente">Paciente</string>
+    <string name="psicologo">Psicólogo</string>
+    <string name="psiquiatra">Psiquiatra</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_dt_nascimento">Data de nascimento</string>
+    <string name="tipo_user">Escolha o tipo de usuário:</string>
+    <string name="hint_morada">Morada</string>
+    <string name="hint_cod_postal">Código postal</string>
+    <string name="select_image">Selecionar imagem</string>
+    <string name="take_photo">Tirar foto</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

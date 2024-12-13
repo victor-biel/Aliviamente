@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DadosEnderecoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/texto_morada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:hint="@string/hint_morada"
+            android:inputType="text"
+            android:textColorHint="@color/hint" />
+
+        <EditText
+            android:id="@+id/cod_postal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:hint="@string/hint_cod_postal"
+            android:inputType="text"
+            android:textColorHint="@color/hint" />
+
+        <EditText
+            android:id="@+id/data_nascimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:hint="@string/hint_dt_nascimento"
+            android:inputType="date"
+            android:textColorHint="@color/hint" />
+
+        <TextView
+            android:id="@+id/info_tipo_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/k2d_thin"
+            android:text="@string/tipo_user"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_paciente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/paciente" />
+
+            <RadioButton
+                android:id="@+id/radio_psicologo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/psicologo" />
+
+            <RadioButton
+                android:id="@+id/radio_psiquiatra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@string/psiquiatra" />
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_cadastrar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/btn_boas_vindas"
+            android:fontFamily="@font/k2d_bold"
+            android:text="@string/btn_continuar"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
