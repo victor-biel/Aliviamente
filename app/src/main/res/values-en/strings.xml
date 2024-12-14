@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aliviamente</string>
+    <string name="textOlá">Hi,</string>
+    <string name="textViewIntrodução">I am here to support you on your journey towards psychological well-being.</string>
+    <string name="btn">Register</string>
+    <string name="textConta">Already have an account?</string>
+    <string name="textClique">Click here!</string>
+    <string name="cadastro">Register</string>
+    <string name="btn_entrar">Sign in</string>
+    <string name="btn_continuar">Continue</string>
+    <string name="hint_email">Insert your e-mail</string>
+    <string name="hint_email2">E-mail</string>
+    <string name="hint_password">Insert your password</string>
+    <string name="hint_password2">Password</string>
+    <string name="hint_conf_password">Confirm password</string>
+    <string name="esquecer_password">Forgot your password?</string>
+    <string name="paciente">Patient</string>
+    <string name="psicologo">Psychologist</string>
+    <string name="psiquiatra">Psychiatrist</string>
+    <string name="hint_nome">Name</string>
+    <string name="hint_dt_nascimento">Date of birthday</string>
+    <string name="tipo_user">Choose user type:</string>
+    <string name="hint_morada">Adress</string>
+    <string name="hint_cod_postal">Zip code</string>
+    <string name="select_image">Select image</string>
+    <string name="take_photo">Take photo</string>
+    <string name="principal">Main</string>
+    <string name="sos">SOS</string>
+    <string name="meu_perfil">My profile</string>
+    <string name="consultas">Consultations</string>
+    <string name="espaco_psicologo">Space with your psychologist</string>
+    <string name="campos_preenchidos">All fields need to be filled in</string>
+</resources>

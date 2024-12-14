@@ -5,7 +5,7 @@
     <string name="btn">Cadastro</string>
     <string name="textConta">Já possui uma conta?</string>
     <string name="textClique">Clique aqui!</string>
-    <string name="login">Login</string>
+    <string name="login" translatable="false">Login</string>
     <string name="cadastro">Cadastro</string>
     <string name="btn_entrar">Entrar</string>
     <string name="btn_continuar">Continuar</string>
@@ -25,6 +25,14 @@
     <string name="hint_cod_postal">Código postal</string>
     <string name="select_image">Selecionar imagem</string>
     <string name="take_photo">Tirar foto</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="principal">Principal</string>
+    <string name="sos">SOS</string>
+    <string name="meu_perfil">Meu perfil</string>
+    <string name="consultas">Consultas</string>
+    <string name="espaco_psicologo">Espaço com seu psicólogo</string>
+    <string name="campos_preenchidos">Todos os campos precisam ser preenchidos</string>
+    <string name="campo_email">O campo e-mail está vazio</string>
+    <string name="campo_password">O campo password está vazio</string>
+
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

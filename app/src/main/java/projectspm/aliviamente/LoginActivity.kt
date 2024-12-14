@@ -3,20 +3,14 @@ package projectspm.aliviamente
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import org.json.JSONException
-import org.json.JSONObject
 import projectspm.aliviamente.databinding.ActivityLoginBinding
-import java.nio.charset.Charset
+
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -29,59 +23,49 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+
     fun doLogin(view: View) {
-        val queue = Volley.newRequestQueue(this)
-        val url = "https://esan-tesp-ds-paw.web.ua.pt/tesp-ds-g15/PAW/api/index.php"
+        val email = binding.email.text.toString()
+        val password = binding.password.text.toString()
+        val erroLogin = binding.erroLogin
 
 
-        val postRequest = object : StringRequest(
-            Method.POST, url,
-            { response ->
-                try {
-                    val jsonResponse = JSONObject(response)
-                    val status = jsonResponse.getString("status")
-                    val message = jsonResponse.getString("message")
-                    if (status == "SUCCESS") {
-                        if (binding.checkBox.isChecked) {
-                            //guardar sharedPreference
-                            getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
-                                .edit()
-                                .putBoolean("login", true)
-                                .putString("email", binding.email.text.toString())
-                                .apply()
-                        }
-                        val intent = Intent(this, HomeActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                    }
-                }catch (e:JSONException) {
-                    Toast.makeText(this, "Erro ao processar a resposta: ${e.message}", Toast.LENGTH_SHORT).show()
-                }
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(this, "Erro: ${error.message}", Toast.LENGTH_SHORT).show()
-            }) {
+        val campos = when {
+            email.isEmpty() && password.isEmpty() -> erroLogin.setText(R.string.campos_preenchidos)
+            email.isEmpty() -> erroLogin.setText(R.string.campo_email)
+            password.isEmpty() ->erroLogin.setText(R.string.campo_password)
 
-            override fun getBody(): ByteArray {
-                val jsonParams = JSONObject()
-                jsonParams.put("email", binding.email.text.toString())
-                jsonParams.put("password", binding.password.text.toString())
-                return jsonParams.toString().toByteArray(Charsets.UTF_8)
-            }
-
-            override fun getHeaders(): Map<String, String> {
-                val headers = HashMap<String, String>()
-                headers["Content-Type"] = "application/json; charset=utf-8"
-                return headers
-            }
-
-
+            else -> null
         }
 
-// Add the request to the RequestQueue.
-        queue.add(postRequest)
+        if (campos != null) {
+            erroLogin.visibility = View.VISIBLE
+        }
+
+
+
+
+        val apiService = ApiService(this)
+        apiService.doLogin(email, password, { jsonResponse ->
+
+            val nome = jsonResponse.getString("nome")
+            getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
+                .edit()
+                .putBoolean("login", true)
+                .putString("email", email)
+                .putString("nome", nome)
+                .apply()
+
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }, { errorMessage ->
+
+            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+
+        })
+
     }
 }
 

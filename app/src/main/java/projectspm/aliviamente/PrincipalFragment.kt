@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class ConsultaFragment : Fragment() {
+class PrincipalFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class ConsultaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_consulta, container, false)
+        return inflater.inflate(R.layout.fragment_principal, container, false)
     }
 
 

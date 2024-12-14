@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/menu_principal"
+        android:icon="@drawable/assignment_ind_42dp"
+        android:title="@string/principal" />
+    <item
+        android:id="@+id/menu_sos"
+        android:icon="@drawable/sos"
+        android:title="@string/sos" />
+    <item
+        android:id="@+id/menu_perfil"
+        android:icon="@drawable/account_circle_42dp"
+        android:title="@string/meu_perfil" />
 
 
 </menu>
