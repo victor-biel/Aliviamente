@@ -1,10 +1,12 @@
 package projectspm.aliviamente
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 
 
 class PrincipalFragment : Fragment() {
@@ -19,9 +21,22 @@ class PrincipalFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_principal, container, false)
+        val view = inflater.inflate(R.layout.fragment_principal, container, false)
+
+        val card_consulta:CardView = view.findViewById(R.id.consultas_card)
+        card_consulta.setOnClickListener{
+            val intent = Intent(context, ConsultaActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+        return view
     }
+
+
+
+
 
 
 }

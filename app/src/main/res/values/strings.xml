@@ -33,6 +33,10 @@
     <string name="campos_preenchidos">Todos os campos precisam ser preenchidos</string>
     <string name="campo_email">O campo e-mail está vazio</string>
     <string name="campo_password">O campo password está vazio</string>
+    <string name="data_consulta">Data da consulta:</string>
+    <string name="hora_consulta">Hora da consulta:</string>
+    <string name="status">Status: </string>
+
 
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

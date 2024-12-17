@@ -3,8 +3,7 @@ package projectspm.aliviamente
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -49,11 +48,13 @@ class LoginActivity : AppCompatActivity() {
         apiService.doLogin(email, password, { jsonResponse ->
 
             val nome = jsonResponse.getString("nome")
+            val id = jsonResponse.getInt("id")
             getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
                 .edit()
                 .putBoolean("login", true)
                 .putString("email", email)
                 .putString("nome", nome)
+                .putInt("id",id)
                 .apply()
 
             val intent = Intent(this, HomeActivity::class.java)
