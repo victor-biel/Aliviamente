@@ -1,8 +1,12 @@
 package projectspm.aliviamente
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import projectspm.aliviamente.adapter.ConsultasAdapter
@@ -20,12 +24,19 @@ class ConsultaActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        binding.btnVoltar.setOnClickListener {
+            finish()
+        }
+
         binding.recyclerViewConsulta.layoutManager =
             LinearLayoutManager(this)
 
         getConsultasInfo()
 
+
     }
+
+
 
     private fun getConsultasInfo () {
         val sharedPreferences = getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
@@ -33,7 +44,6 @@ class ConsultaActivity : AppCompatActivity() {
 
 
         if (id_paciente == -1) {
-            // Trate o caso em que o ID do paciente não está disponível
             Log.e("Error", "ID do paciente não encontrado.")
             return
         }
@@ -53,4 +63,6 @@ class ConsultaActivity : AppCompatActivity() {
             Log.e("Error", errorMessage)
         })
     }
+
+
 }

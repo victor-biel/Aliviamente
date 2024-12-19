@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_mobile"
-    tools:context=".HomeActivity">
+    tools:context=".HomeDoctorActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -64,16 +64,16 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/placeholder"
+        android:id="@+id/placeholder_doctor"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_doctor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/navigation_doctor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:backgroundTint="@color/titulo_boas_vindas"
@@ -84,6 +84,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu_doctor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

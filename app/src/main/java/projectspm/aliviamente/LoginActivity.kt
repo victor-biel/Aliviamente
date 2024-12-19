@@ -49,17 +49,26 @@ class LoginActivity : AppCompatActivity() {
 
             val nome = jsonResponse.getString("nome")
             val id = jsonResponse.getInt("id")
+            val tipo_user = jsonResponse.getString("tipo_user")
             getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
                 .edit()
                 .putBoolean("login", true)
                 .putString("email", email)
                 .putString("nome", nome)
+                .putString("tipo_user", tipo_user)
                 .putInt("id",id)
                 .apply()
 
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = when {
+                tipo_user == "Paciente" -> Intent(this, HomeActivity::class.java)
+                else -> Intent(this, HomeDoctorActivity::class.java)
+            }
             startActivity(intent)
             finish()
+
+
+
+
 
         }, { errorMessage ->
 

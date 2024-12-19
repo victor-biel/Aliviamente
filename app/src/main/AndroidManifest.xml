@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Aliviamente"
         tools:targetApi="31">
         <activity
+            android:name=".SolicitacoesConsultasDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeDoctorActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConsultaActivity"
             android:exported="false" />
         <activity

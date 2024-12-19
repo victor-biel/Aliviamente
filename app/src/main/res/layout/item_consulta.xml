@@ -11,8 +11,8 @@
     android:layout_marginBottom="15dp"
     app:cardBackgroundColor="@color/titulo_boas_vindas"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp"
-    app:cardMaxElevation="10dp">
+    app:cardElevation="30dp"
+    app:cardMaxElevation="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,6 +99,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/k2d_thin"
                 android:text="TextView"
+                android:textAlignment="center"
                 android:textColor="@color/white" />
         </LinearLayout>
 

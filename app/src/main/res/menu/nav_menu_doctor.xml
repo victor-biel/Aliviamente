@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_principal_doctor"
+        android:icon="@drawable/assignment_ind_42dp"
+        android:title="@string/principal" />
+    <item
+        android:id="@+id/menu_sos_doctor"
+        android:icon="@drawable/sos"
+        android:title="@string/sos" />
+    <item
+        android:id="@+id/menu_perfil_doctor"
+        android:icon="@drawable/account_circle_42dp"
+        android:title="@string/meu_perfil" />
+
+
+</menu>

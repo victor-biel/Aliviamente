@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.HandlerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -16,16 +17,18 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
 
-        val login = getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
-            .getBoolean("login", false)
-        Handler(Looper.getMainLooper()).postDelayed({
+        val sharedPref = getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
+        val login = sharedPref.getBoolean("login", false)
+        val tipo_user = sharedPref.getString("tipo_user", null)
 
-            if (login) {
-                startActivity(Intent(this, HomeActivity::class.java))
-            } else {
-                startActivity(Intent(this, MainActivity::class.java))
+        HandlerCompat.createAsync(Looper.getMainLooper()).postDelayed({
+            val intent = when {
+                login && tipo_user == "Paciente" -> Intent(this, HomeActivity::class.java)
+                login -> Intent(this, HomeDoctorActivity::class.java)
+                else -> Intent(this, MainActivity::class.java)
             }
+            startActivity(intent)
             finish()
-        }, 3000)
-    }
+            }, 3000)
+        }
 }

@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     fun goLogin (view: View) {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     fun goCadastro (view:View) {

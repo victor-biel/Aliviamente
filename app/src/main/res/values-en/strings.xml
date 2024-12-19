@@ -31,4 +31,14 @@
     <string name="consultas">Consultations</string>
     <string name="espaco_psicologo">Space with your psychologist</string>
     <string name="campos_preenchidos">All fields need to be filled in</string>
+    <string name="campo_email">The email field is empty</string>
+    <string name="campo_password">The password field is empty</string>
+    <string name="data_consulta">Consultation date:</string>
+    <string name="hora_consulta">Consultation time:</string>
+    <string name="solicitacoes_consultas">Consultation requests</string>
+    <string name="aprovar">Approve</string>
+    <string name="espaco_paciente">Space with your patient</string>
+    <string name="solicitacoes_apoio">Support requests</string>
+    <string name="sair">Log out</string>
+    <string name="suas_soli_cons">Your consultation requests</string>
 </resources>
