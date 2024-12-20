@@ -44,6 +44,6 @@
     <string name="sair">Sair</string>
 
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="cedula_profissional">Cédula profissional</string>
-    <string name="tipo_user">Tipo de usuário</string>
+    <string name="cedula_profissional">Cédula Profissional</string>
+    <string name="tipo_user_perfil">Tipo de Usuário</string>
 </resources>
