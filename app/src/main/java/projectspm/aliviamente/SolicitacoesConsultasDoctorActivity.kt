@@ -1,5 +1,6 @@
 package projectspm.aliviamente
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -34,7 +35,10 @@ class SolicitacoesConsultasDoctorActivity : AppCompatActivity() {
     private fun getConsultas () {
         val apiService = ApiService(this)
 
-        apiService.getConsultas(
+        val sharedPreferences = getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
+        val id = sharedPreferences.getInt("id", -1)
+
+        apiService.getConsultas(id,
             onSuccess = { consultas ->
                 Log.d("Consultas", "Número de consultas: ${consultas.size}")
                 if (consultas.isNotEmpty()) {

@@ -28,6 +28,10 @@ class ConsultaActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.btnSolicitarConsulta.setOnClickListener {
+            goNovaConsulta(it)
+        }
+
         binding.recyclerViewConsulta.layoutManager =
             LinearLayoutManager(this)
 
@@ -35,6 +39,8 @@ class ConsultaActivity : AppCompatActivity() {
 
 
     }
+
+
 
 
 
@@ -55,13 +61,30 @@ class ConsultaActivity : AppCompatActivity() {
                 if (consultas.isNotEmpty()) {
                     val adapter = ConsultasAdapter(consultas)
                     binding.recyclerViewConsulta.adapter = adapter
+                    if (consultas.any{it.status == "Aceita" || it.status == "Realizada"} || consultas.size > 1 ) {
+                        binding.btnSolicitarConsulta.visibility = View.GONE
+                    } else {
+                        binding.btnSolicitarConsulta.visibility = View.VISIBLE
+                    }
+
+
                 } else {
-                    Log.e("Error", "Nenhuma consulta encontrada.")
+                    binding.recyclerViewConsulta.visibility = View.GONE
+                    binding.textViewEmpty.visibility = View.VISIBLE
                 }
         },
         onError =  {errorMessage ->
             Log.e("Error", errorMessage)
         })
+    }
+
+    private fun goMyProfile() {
+
+    }
+
+    fun goNovaConsulta (view: View) {
+        val intent = Intent(this, NovaConsultaActivity::class.java)
+        startActivity(intent)
     }
 
 

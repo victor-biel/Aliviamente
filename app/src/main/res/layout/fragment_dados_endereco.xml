@@ -39,6 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             android:ems="10"
+            android:focusable="false"
             android:hint="@string/hint_dt_nascimento"
             android:inputType="date"
             android:textColorHint="@color/hint" />
@@ -53,6 +54,7 @@
             android:textSize="14sp" />
 
         <RadioGroup
+            android:id="@+id/radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

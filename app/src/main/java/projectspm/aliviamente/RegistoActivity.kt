@@ -24,7 +24,7 @@ class RegistoActivity : AppCompatActivity() {
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
+//            .addToBackStack(null)
             .commit()
     }
 

@@ -19,6 +19,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/sos_card"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginRight="30dp"
@@ -124,6 +125,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/meu_perfil_card"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 app:cardBackgroundColor="@color/card"
@@ -156,5 +158,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </FrameLayout>

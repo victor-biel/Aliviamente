@@ -6,205 +6,222 @@
     android:layout_height="match_parent"
     tools:context=".MeuPerfilFragment">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/card"
-        app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/card"
+            app:cardCornerRadius="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/hint_nome"
-                    android:textColor="@color/white" />
+                    android:layout_weight="0"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/hint_email2"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/hint_nome"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/hint_dt_nascimento"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/hint_email2"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/hint_morada"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/hint_dt_nascimento"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/hint_cod_postal"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/hint_morada"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/tipo_user"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/hint_cod_postal"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/hint_password2"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/tipo_user_perfil"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/text_cedula_profissional"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="@string/cedula_profissional"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/hint_password2"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
+                    <TextView
+                        android:id="@+id/text_cedula_profissional"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:text="@string/cedula_profissional"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/email_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/dt_nasc_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/morada_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/cod_postal_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tipo_user_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/password_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/cedula_prof_perfil"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="@font/k2d_thin"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/erro"
+            android:text="@string/sair" />
+    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/nome_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/email_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/dt_nasc_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/morada_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/cod_postal_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/tipo_user_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/password_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/cedula_prof_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="7dp"
-                    android:layout_marginBottom="7dp"
-                    android:fontFamily="@font/k2d_thin"
-                    android:text="TextView"
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/erro"
-        android:text="@string/sair" />
 </FrameLayout>

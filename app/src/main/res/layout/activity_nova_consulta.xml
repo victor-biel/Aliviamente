@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_mobile"
-    tools:context=".ConsultaActivity">
+    tools:context=".NovaConsultaActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_consulta"
+        android:id="@+id/cardView_nova_consulta"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:backgroundTint="@color/titulo_boas_vindas"
@@ -21,7 +21,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btn_voltar"
+                android:id="@+id/btn_voltar_soli"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -37,9 +37,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:fontFamily="@font/k2d_bold"
-                android:text="@string/suas_soli_cons"
+                android:text="@string/nova_consulta"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -55,40 +55,71 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_nova_consulta">
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/k2d_thin"
+            android:text="@string/data_consulta"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Clique para selecionar "
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/k2d_thin"
+            android:text="@string/hora_consulta"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Clique para selecionar"
+            android:inputType="time" />
+
+    </LinearLayout>
+
     <Button
-        android:id="@+id/btn_solicitar_consulta"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="@color/btn_boas_vindas"
+        android:onClick="requestConsultationActivity"
         android:text="@string/nova_consulta"
         android:textColor="@color/white"
         android:textColorLink="@color/white"
-        app:cornerRadius="10dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_consulta" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <TextView
-        android:id="@+id/textViewEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/k2d_bold"
-        android:text="@string/sem_consulta"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewConsulta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_gravity="center"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewConsulta"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewEmpty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_solicitar_consulta"
-        tools:listitem="@layout/item_consulta" />
 </androidx.constraintlayout.widget.ConstraintLayout>

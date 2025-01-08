@@ -1,5 +1,7 @@
 package projectspm.aliviamente.adapter
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +34,12 @@ class SolicitacoesConsultasAdapter (val solitacoes_consultas: List<Consulta>):Re
         holder.txt_data_consulta_doctor.text = soli_cons.data_consulta
         holder.txt_hora_consulta_doctor.text = soli_cons.hora_consulta
         holder.txt_status_doctor.text = soli_cons.status
+
+//        val radius = GradientDrawable()
+//        radius.cornerRadius = 16f
+//        radius.setColor(Color.parseColor("#E4C286"))
+//
+//        holder.txt_status_doctor.background = radius
     }
 
     override fun getItemCount(): Int {

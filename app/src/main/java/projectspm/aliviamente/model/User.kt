@@ -9,6 +9,7 @@ class User {
     var dt_nasc: String = ""
     var morada: String = ""
     var codPostal: String = ""
-    var cedula_profissional: String? = null
     var password: String = ""
+    var cedula_profissional: String? = null
+
 }

@@ -22,23 +22,26 @@ import java.util.Locale
 class DadosArquivoFragment : Fragment() {
 
     private lateinit var imagePreview: ImageView
-    private var currentPhotoPath: String? = null
+    private lateinit var photoUri: Uri
 
-    private val pickImageLauncher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) {
-            uri: Uri? ->
+    private val capturePhotoLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+            if (success) {
+                imagePreview.setImageURI(photoUri)
+
+                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, photoUri)
+            }
+        }
+
+    private val chooseImageLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 imagePreview.setImageURI(it)
+
+                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it)
             }
         }
 
-    private val captureImageLauncher =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) { sucess ->
-            if (sucess) {
-                val bitmap = BitmapFactory.decodeFile(currentPhotoPath)
-                imagePreview.setImageBitmap(bitmap)
-            }
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +64,7 @@ class DadosArquivoFragment : Fragment() {
         }
 
         btn_selectImage.setOnClickListener {
-            openImagePicker()
+            openImageFromGallery()
         }
 
 
@@ -70,29 +73,35 @@ class DadosArquivoFragment : Fragment() {
         return view
     }
 
-    private fun openImagePicker() {
-        pickImageLauncher.launch("image/*")
+
+
+    private fun openImageFromGallery() {
+        chooseImageLauncher.launch("image/*")
     }
 
-    private fun capturePhoto () {
-        val arquivoFoto: File? = createImageFile()
-        arquivoFoto?.let {
-            val fotoURI: Uri = FileProvider.getUriForFile(
-                requireContext(),
-                "aliviamente",
-                it
-            )
-            captureImageLauncher.launch(fotoURI)
+    private fun capturePhoto() {
+        // Criar um arquivo temporário para armazenar a foto capturada
+        val photoFile = File.createTempFile("IMG_", ".jpg", requireContext().cacheDir).apply {
+            createNewFile()
+            deleteOnExit()
         }
+
+        // Obter URI para o arquivo
+        photoUri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.provider",
+            photoFile
+        )
+
+        // Iniciar a captura de foto
+        capturePhotoLauncher.launch(photoUri)
     }
 
-    private fun createImageFile(): File? {
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
-        val storageDir: File? = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("IMG_${timestamp}_",".jpg", storageDir ).apply {
-            currentPhotoPath = absolutePath
-        }
+    fun doRegister (view: View) {
+
     }
+
+
 
 
 
