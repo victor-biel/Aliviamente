@@ -43,7 +43,6 @@
     <string name="solicitacoes_apoio">Solicitações de apoio</string>
     <string name="sair">Sair</string>
     <string name="nova_consulta">Solicitar consulta</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="cedula_profissional">Cédula Profissional</string>
     <string name="tipo_user_perfil">Tipo de Usuário</string>
     <string name="sem_consulta">Nenhuma consulta encontrada.</string>
