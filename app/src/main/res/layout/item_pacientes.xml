@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_paciente"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -8,7 +9,7 @@
     android:layout_marginTop="15dp"
     android:layout_marginRight="30dp"
     android:layout_marginBottom="15dp"
-    android:backgroundTint="@color/btn_boas_vindas"
+    android:backgroundTint="@color/card"
     app:cardCornerRadius="10dp"
     app:cardElevation="30dp"
     app:cardMaxElevation="30dp">
@@ -26,7 +27,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textViewEx8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -38,37 +39,27 @@
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textViewEx9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/k2d_thin"
-                android:text="@string/data_consulta"
+                android:text="@string/idade"
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textViewEx10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/k2d_thin"
-                android:text="@string/hora_consulta"
+                android:text="@string/hint_email2"
                 android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/k2d_thin"
-                android:text="@string/status"
-                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -79,8 +70,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/nome_paciente_doctor"
-                android:layout_width="wrap_content"
+                android:id="@+id/item_nome_paciente"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="2dp"
@@ -88,72 +79,33 @@
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/k2d_thin"
-                android:text="TextView" />
+                android:textColor="@color/btn_simples" />
 
             <TextView
-                android:id="@+id/txt_data_consulta_doctor"
-                android:layout_width="wrap_content"
+                android:id="@+id/txt_idade"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/k2d_thin"
-                android:text="TextView" />
+                android:textColor="@color/btn_simples" />
 
             <TextView
-                android:id="@+id/txt_hora_consulta_doctor"
-                android:layout_width="wrap_content"
+                android:id="@+id/txt_email"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/k2d_thin"
-                android:text="TextView" />
+                android:textColor="@color/btn_simples" />
 
-            <TextView
-                android:id="@+id/txt_status_doctor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/k2d_thin"
-                android:text="TextView" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0"
-                android:fontFamily="@font/k2d_thin"
-                android:text="@string/aprovar"
-                android:textColor="@color/white" />
-
-            <ImageButton
-                android:id="@+id/img_btn_aprovar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0"
-                android:background="?attr/selectableItemBackground"
-                android:paddingTop="10dp"
-                android:scaleType="fitStart"
-                app:srcCompat="@drawable/check_circle" />
-
-        </LinearLayout>
 
     </LinearLayout>
 

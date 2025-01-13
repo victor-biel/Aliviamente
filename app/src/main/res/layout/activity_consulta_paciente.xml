@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_mobile"
-    tools:context=".SolicitacoesConsultasDoctorActivity">
+    tools:context=".ConsultaPacienteActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_soli_cons_doctor"
-        android:layout_width="wrap_content"
+        android:id="@+id/cardView_consulta_paciente"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/titulo_boas_vindas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
@@ -21,7 +23,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btn_voltarDoctor"
+                android:id="@+id/btn_voltar_c_p"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -33,18 +35,18 @@
                 app:srcCompat="@drawable/arrow_back" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/textView12_c_p"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:fontFamily="@font/k2d_bold"
-                android:text="@string/solicitacoes_apoio"
+                android:text="@string/consultas"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView5_c_p"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -54,26 +56,15 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textViewEmpty_doctor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/k2d_bold"
-        android:text="@string/sem_consulta"
-        android:visibility="gone"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCP"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView_soli_cons_doctor" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView_consulta_paciente"
+        tools:listitem="@layout/item_consulta_paciente"
+        android:clickable="true"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_soli_cons_doctor"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewEmpty_doctor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_soli_cons_doctor"
-        tools:listitem="@layout/item_solicitacao_consulta" />
 </androidx.constraintlayout.widget.ConstraintLayout>

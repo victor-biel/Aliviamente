@@ -6,58 +6,82 @@
     tools:context=".DadosEnderecoFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_morada"
+            android:textColor="@color/btn_boas_vindas"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/texto_morada"
-            android:layout_width="wrap_content"
+            android:layout_width="285dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             android:ems="10"
             android:hint="@string/hint_morada"
             android:inputType="text"
+            android:textColor="@color/black"
             android:textColorHint="@color/hint" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_cod_postal"
+            android:textColor="@color/btn_boas_vindas"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/cod_postal"
-            android:layout_width="wrap_content"
+            android:layout_width="285dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             android:ems="10"
             android:hint="@string/hint_cod_postal"
             android:inputType="text"
+            android:textColor="@color/black"
             android:textColorHint="@color/hint" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint_dt_nascimento"
+            android:textColor="@color/btn_boas_vindas"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/data_nascimento"
-            android:layout_width="wrap_content"
+            android:layout_width="285dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             android:ems="10"
             android:focusable="false"
             android:hint="@string/hint_dt_nascimento"
             android:inputType="date"
+            android:textColor="@color/black"
             android:textColorHint="@color/hint" />
 
         <TextView
             android:id="@+id/info_tipo_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:fontFamily="@font/k2d_thin"
             android:text="@string/tipo_user"
-            android:textSize="14sp" />
+            android:textColor="@color/btn_boas_vindas"
+            android:textSize="16sp" />
 
         <RadioGroup
             android:id="@+id/radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal">
 
@@ -67,7 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="@string/paciente" />
+                android:text="@string/paciente"
+                android:textColor="@color/btn_boas_vindas" />
 
             <RadioButton
                 android:id="@+id/radio_psicologo"
@@ -75,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="@string/psicologo" />
+                android:text="@string/psicologo"
+                android:textColor="@color/btn_boas_vindas" />
 
             <RadioButton
                 android:id="@+id/radio_psiquiatra"
@@ -83,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:text="@string/psiquiatra" />
+                android:text="@string/psiquiatra"
+                android:textColor="@color/btn_boas_vindas" />
 
 
         </RadioGroup>

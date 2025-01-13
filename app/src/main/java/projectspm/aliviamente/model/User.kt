@@ -11,5 +11,8 @@ class User {
     var codPostal: String = ""
     var password: String = ""
     var cedula_profissional: String? = null
+    var idade: String = ""
+    var id: Int = 0
+    var id_consulta: Int = 0
 
 }

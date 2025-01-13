@@ -28,9 +28,6 @@ class RegistoActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun doRegister(view: View) {
-
-    }
 
 
 }

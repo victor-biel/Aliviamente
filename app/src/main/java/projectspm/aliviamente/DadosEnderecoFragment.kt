@@ -11,9 +11,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.Date
@@ -35,7 +38,9 @@ class DadosEnderecoFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dados_endereco, container, false)
 
-        val dt_nasc = view.findViewById<TextView>(R.id.data_nascimento)
+        val viewModel = ViewModelProvider(requireActivity()).get(CadastroViewModel::class.java)
+
+        val dt_nasc = view.findViewById<EditText>(R.id.data_nascimento)
 
         dt_nasc.setOnClickListener{
             val calendar = Calendar.getInstance()
@@ -44,19 +49,11 @@ class DadosEnderecoFragment : Fragment() {
                 requireContext(),
                 { _, year, month, dayOfMonth ->
 
-                    if (month < 10) {
-                        val monthString = "0${month + 1}"
-                        val selectedDate = "${year}-${monthString}-$dayOfMonth"
-                        Log.d("Data selecionada: ", selectedDate)
-                        Log.d("Type of selectedDate: ", selectedDate.javaClass.name)
-                        dt_nasc.setText(selectedDate)
-                        return@DatePickerDialog
-                    }else {
-                        val selectedDate = "${year}-${month + 1}-$dayOfMonth"
-                        Log.d("Data selecionada: ", selectedDate)
-                        Log.d("Type of selectedDate: ", selectedDate.javaClass.name)
-                        dt_nasc.setText(selectedDate)
-                    }
+                    val monthString = if (month + 1 < 10) "0${month + 1}" else "${month + 1}"
+                    val dayString = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
+                    val selectedDate = "$year-$monthString-$dayString"
+                    Log.d("Data selecionada: ", selectedDate)
+                    dt_nasc.setText(selectedDate)
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -74,8 +71,22 @@ class DadosEnderecoFragment : Fragment() {
         btn_cadastrar.setOnClickListener {
 
             if (radio_paciente.isChecked) {
-                doRegister(view)
+                if (validateFields(view)) {
+
+                    doRegister(view)
+                }else {
+                    Toast.makeText(requireContext(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
+                }
+
             }else {
+                viewModel.dataNascimento.value = dt_nasc.text.toString()
+                viewModel.morada.value = view.findViewById<EditText>(R.id.texto_morada).text.toString()
+                viewModel.codigoPostal.value = view.findViewById<EditText>(R.id.cod_postal).text.toString()
+                viewModel.tipoUsuario.value = when (view.findViewById<RadioGroup>(R.id.radio_group).checkedRadioButtonId) {
+                    R.id.radio_psicologo -> "Psicólogo"
+                    R.id.radio_psiquiatra -> "Psiquiatra"
+                    else -> "Paciente"
+                }
                 (activity as? RegistoActivity)?.replaceFragment(DadosArquivoFragment())
             }
 
@@ -84,11 +95,20 @@ class DadosEnderecoFragment : Fragment() {
 
         return view
     }
+    private fun validateFields(view: View): Boolean {
+        val texto_morada = view.findViewById<EditText>(R.id.texto_morada)
+        val cod_postal = view.findViewById<EditText>(R.id.cod_postal)
+        val dt_nascimento = view.findViewById<TextView>(R.id.data_nascimento)
+
+        return texto_morada.text.isNotEmpty() && cod_postal.text.isNotEmpty() && dt_nascimento.text.isNotEmpty()
+    }
+
 
     fun doRegister(view: View) {
-        val texto_morada = view.findViewById<TextView>(R.id.texto_morada)
-        val cod_postal = view.findViewById<TextView>(R.id.cod_postal)
-        val dt_nascimento = view.findViewById<TextView>(R.id.data_nascimento)
+        val texto_morada = view.findViewById<EditText>(R.id.texto_morada)
+        val cod_postal = view.findViewById<EditText>(R.id.cod_postal)
+        val dt_nascimento = view.findViewById<EditText>(R.id.data_nascimento)
+        println("Data de nascimento: ${dt_nascimento.text}")
         val radio_group = view.findViewById<RadioGroup>(R.id.radio_group)
         val tipo_user = when (radio_group.checkedRadioButtonId) {
             R.id.radio_paciente -> "Paciente"
@@ -97,31 +117,28 @@ class DadosEnderecoFragment : Fragment() {
             else -> "Paciente"
         }
 
-        val sharedPreferences = activity?.getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
-        val nome_registro = sharedPreferences?.getString("nome_registro", "Nome") ?: "Nome"
-        val email_registro = sharedPreferences?.getString("email_registro", "Email") ?: "Email"
-        val senha_registro = sharedPreferences?.getString("senha_registro", "Senha") ?: "Senha"
-        val confirmar_senha_registro = sharedPreferences?.getString("confirmar_senha_registro", "Confirmar Senha") ?: "Confirmar Senha"
-
+        val viewModel = ViewModelProvider(requireActivity()).get(CadastroViewModel::class.java)
 
         val apiService = ApiService(requireContext())
         if (tipo_user == "Paciente") {
             apiService.doRegister(
-                nome_registro.toString(),
-                email_registro.toString(),
-                senha_registro.toString(),
-                confirmar_senha_registro.toString(),
+                viewModel.nome.value.toString(),
+                viewModel.email.value.toString(),
+                viewModel.senha.value.toString(),
+                viewModel.confirmarSenha.value.toString(),
+                dt_nascimento.text.toString(),
                 texto_morada.text.toString(),
                 cod_postal.text.toString(),
-                dt_nascimento.text.toString(),
                 tipo_user,
-                cedulaProfissional = null, onSuccess =  { jsonResponse ->
-                    Log.e("SUCCESS", jsonResponse.toString()) // Verifique o que está sendo retornado
-
+                cedula_profissional = null, { jsonResponse ->
+                    Log.e("SUCCESS", jsonResponse.toString())
+                    Toast.makeText(requireContext(), "Registo realizado com sucesso", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
 
             }, onError =
                 { errorMessage ->
-                Log.e("Error", errorMessage)
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
             })
         }
 
@@ -132,4 +149,6 @@ class DadosEnderecoFragment : Fragment() {
 
 
 }
+
+
 

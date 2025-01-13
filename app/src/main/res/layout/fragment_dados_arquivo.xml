@@ -16,13 +16,13 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:background="@android:color/darker_gray"
             android:scaleType="centerCrop" />
 
         <Button
             android:id="@+id/btn_select_image"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/btn_boas_vindas"
             android:text="@string/select_image"
@@ -30,11 +30,23 @@
 
         <Button
             android:id="@+id/btn_take_photo"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/titulo_boas_vindas"
             android:text="@string/take_photo"
+            android:textColorLink="@color/white" />
+
+        <Button
+            android:id="@+id/btn_cadastrar_d_arq"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/btn_simples"
+            android:text="@string/cadastrar"
+            android:textColor="@color/white"
             android:textColorLink="@color/white" />
     </LinearLayout>
 </FrameLayout>

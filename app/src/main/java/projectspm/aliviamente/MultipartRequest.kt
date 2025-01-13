@@ -5,7 +5,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.HttpHeaderParser
 import java.io.ByteArrayOutputStream
 
-class MultipartRequest(
+open class MultipartRequest(
     method: Int,
     url: String,
     private val responseListener: Response.Listener<NetworkResponse>,
@@ -14,7 +14,7 @@ class MultipartRequest(
 
     private val params: MutableMap<String, String> = HashMap()
     private val byteData: MutableMap<String, ByteArray> = HashMap()
-    private val boundary: String = "apiclient-" + System.currentTimeMillis() // Definindo o boundary aqui
+    private val boundary: String = "apiclient-" + System.currentTimeMillis()
 
     fun addStringParam(key: String, value: String) {
         params[key] = value
@@ -29,24 +29,43 @@ class MultipartRequest(
     }
 
     override fun getBody(): ByteArray {
-        val bodyBuilder = StringBuilder()
+        val outputStream = ByteArrayOutputStream()
+        val lineEnd = "\r\n".toByteArray()
+        val twoHyphens = "--".toByteArray()
+
+
         for ((key, value) in params) {
-            bodyBuilder.append("--$boundary\r\n")
-            bodyBuilder.append("Content-Disposition: form-data; name=\"$key\"\r\n\r\n")
-            bodyBuilder.append(value)
-            bodyBuilder.append("\r\n")
+            outputStream.write(twoHyphens)
+            outputStream.write(boundary.toByteArray())
+            outputStream.write(lineEnd)
+            outputStream.write("Content-Disposition: form-data; name=\"$key\"".toByteArray())
+            outputStream.write(lineEnd)
+            outputStream.write(lineEnd)
+            outputStream.write(value.toByteArray())
+            outputStream.write(lineEnd)
         }
+
 
         for ((key, fileData) in byteData) {
-            bodyBuilder.append("--$boundary\r\n")
-            bodyBuilder.append("Content-Disposition: form-data; name=\"$key\"; filename=\"file.jpg\"\r\n")
-            bodyBuilder.append("Content-Type: image/jpeg\r\n\r\n")
-            bodyBuilder.append(String(fileData))
-            bodyBuilder.append("\r\n")
+            outputStream.write(twoHyphens)
+            outputStream.write(boundary.toByteArray())
+            outputStream.write(lineEnd)
+            outputStream.write("Content-Disposition: form-data; name=\"$key\"; filename=\"file.jpg\"".toByteArray())
+            outputStream.write(lineEnd)
+            outputStream.write("Content-Type: image/jpeg".toByteArray())
+            outputStream.write(lineEnd)
+            outputStream.write(lineEnd)
+            outputStream.write(fileData)
+            outputStream.write(lineEnd)
         }
 
-        bodyBuilder.append("--$boundary--\r\n")
-        return bodyBuilder.toString().toByteArray(Charsets.UTF_8)
+
+        outputStream.write(twoHyphens)
+        outputStream.write(boundary.toByteArray())
+        outputStream.write(twoHyphens)
+        outputStream.write(lineEnd)
+
+        return outputStream.toByteArray()
     }
 
     override fun parseNetworkResponse(response: NetworkResponse): Response<NetworkResponse> {

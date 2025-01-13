@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModelProvider
 
 
 class DadosPessoaisFragment : Fragment() {
@@ -29,35 +31,38 @@ class DadosPessoaisFragment : Fragment() {
 
         val view =  inflater.inflate(R.layout.fragment_dados_pessoais, container, false)
 
-
+        val viewModel = ViewModelProvider(requireActivity()).get(CadastroViewModel::class.java)
 
         val btn_continuar = view.findViewById<Button>(R.id.btn_continuar)
-        val nome = view.findViewById<TextView>(R.id.texto_nome)
-        val email = view.findViewById<TextView>(R.id.texto_email)
-        val senha = view.findViewById<TextView>(R.id.texto_password)
-        val confirmarSenha = view.findViewById<TextView>(R.id.texto_conf_password)
-        val sharedPreferences = activity?.getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
-        val editor = sharedPreferences?.edit()
-        editor?.putString("nome_registro", nome.text.toString())
-        editor?.putString("email_registro", email.text.toString())
-        editor?.putString("senha_registro", senha.text.toString())
-        editor?.putString("confirmar_senha_registro", confirmarSenha.text.toString())
-        editor?.apply()
+        val nome = view.findViewById<EditText>(R.id.texto_nome)
+        val email = view.findViewById<EditText>(R.id.texto_email)
+        val senha = view.findViewById<EditText>(R.id.texto_password)
+        val confirmarSenha = view.findViewById<EditText>(R.id.texto_conf_password)
 
 
-        verifyPassword(view)
+
         verifyFields(view)
+
+
         nome.addTextChangedListener { verifyFields(view) }
         email.addTextChangedListener { verifyFields(view) }
         senha.addTextChangedListener { verifyFields(view) }
-        confirmarSenha.addTextChangedListener { verifyFields(view) }
-        confirmarSenha.addTextChangedListener { verifyPassword(view) }
+        confirmarSenha.addTextChangedListener {
+            verifyFields(view)
 
+        }
 
 
 
         btn_continuar.setOnClickListener {
+            if (!verifyPassword(view)) return@setOnClickListener
             (activity as? RegistoActivity)?.replaceFragment(DadosEnderecoFragment())
+
+            viewModel.nome.value = nome.text.toString()
+            viewModel.email.value = email.text.toString()
+            viewModel.senha.value = senha.text.toString()
+            viewModel.confirmarSenha.value = confirmarSenha.text.toString()
+
 
         }
 
@@ -74,9 +79,6 @@ class DadosPessoaisFragment : Fragment() {
         val senha = view.findViewById<TextView>(R.id.texto_password)
         val confirmarSenha = view.findViewById<TextView>(R.id.texto_conf_password)
 
-
-
-
         val btn_continuar = view.findViewById<Button>(R.id.btn_continuar)
 
         if (nome.text.isNotEmpty() && email.text.isNotEmpty() && senha.text.isNotEmpty() && confirmarSenha.text.isNotEmpty()) {
@@ -87,15 +89,17 @@ class DadosPessoaisFragment : Fragment() {
 
     }
 
-    private fun verifyPassword(view: View) {
+    private fun verifyPassword(view: View): Boolean {
         val senha = view.findViewById<TextView>(R.id.texto_password)
         val confirmarSenha = view.findViewById<TextView>(R.id.texto_conf_password)
         val btn_continuar = view.findViewById<Button>(R.id.btn_continuar)
 
         if (confirmarSenha.text.toString() != senha.text.toString()) {
             Toast.makeText(requireContext(), "As senhas não se coincidem", Toast.LENGTH_SHORT).show()
-            btn_continuar.isEnabled = false
+            return false
+
         } else {
+            return true
             btn_continuar.isEnabled = true
         }
     }

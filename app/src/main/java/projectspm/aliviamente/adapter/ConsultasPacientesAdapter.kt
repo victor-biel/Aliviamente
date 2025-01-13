@@ -16,30 +16,31 @@ import projectspm.aliviamente.R
 import projectspm.aliviamente.model.Consulta
 
 
-class ConsultasAdapter(val consultas: List<Consulta>): RecyclerView.Adapter<ConsultasAdapter.ConsultaViewHolder>() {
+class ConsultasPacientesAdapter(val consultas_pacientes: List<Consulta>): RecyclerView.Adapter<ConsultasPacientesAdapter.ConsultaPacientesViewHolder>() {
 
+    class ConsultaPacientesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val card_consulta_i_c_p = itemView.findViewById<CardView>(R.id.card_consulta_i_c_p)
+        val data_consulta_i_c_p = itemView.findViewById<TextView>(R.id.data_consulta_i_c_p)
+        val hora_consulta_i_c_p = itemView.findViewById<TextView>(R.id.hora_consulta_i_c_p)
+        val txt_status = itemView.findViewById<TextView>(R.id.status_i_c_p)
 
-    class ConsultaViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val card = itemView.findViewById<CardView>(R.id.card_consulta)
-        val txt_data_consulta = itemView.findViewById<TextView>(R.id.data_consulta)
-        val txt_hora_consulta = itemView.findViewById<TextView>(R.id.hora_consulta)
-        val txt_status = itemView.findViewById<TextView>(R.id.status)
 
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConsultaPacientesViewHolder {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConsultaViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.item_consulta, parent, false)
-        return ConsultaViewHolder(view)
+            .inflate(R.layout.item_consulta_paciente, parent, false)
+        return ConsultaPacientesViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ConsultaViewHolder, position: Int) {
-        val cons = consultas[position]
-        holder.txt_data_consulta.text = cons.data_consulta
-        holder.txt_hora_consulta.text = cons.hora_consulta
+    override fun onBindViewHolder(holder: ConsultaPacientesViewHolder, position: Int) {
+        val cons = consultas_pacientes[position]
+        holder.data_consulta_i_c_p.text = cons.data_consulta
+        holder.hora_consulta_i_c_p.text = cons.hora_consulta
         holder.txt_status.text = cons.status
+
 
         val radius = GradientDrawable()
         radius.cornerRadius = 16f
@@ -52,18 +53,17 @@ class ConsultasAdapter(val consultas: List<Consulta>): RecyclerView.Adapter<Cons
         })
         holder.txt_status.background = radius
 
-
-
-        holder.card.setOnClickListener{
-            val context = holder.card.context
+        holder.card_consulta_i_c_p.setOnClickListener{
+            val context = holder.card_consulta_i_c_p.context
             val intent = Intent(context, DetalhesPacientesActivity::class.java)
             intent.putExtra("nome", cons.nome_paciente)
             intent.putExtra("id_consulta", cons.id_consulta)
             context.startActivity(intent)
         }
+
     }
     override fun getItemCount(): Int {
-        return consultas.size
+        return consultas_pacientes.size
     }
 
 

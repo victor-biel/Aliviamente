@@ -35,6 +35,12 @@ class PrincipalDoctorFragment : Fragment() {
             val intent = Intent(context, SolicitacoesConsultasDoctorActivity::class.java)
             startActivity(intent)
         }
+
+        val card_paciente: CardView = view.findViewById(R.id.card_paciente_doctor)
+        card_paciente.setOnClickListener{
+            val intent = Intent(context, PacientesActivity::class.java)
+            startActivity(intent)
+        }
         return  view
     }
 

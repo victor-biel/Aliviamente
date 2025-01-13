@@ -3,6 +3,8 @@ package projectspm.aliviamente
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,6 +19,9 @@ class SolicitacoesConsultasDoctorActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivitySolicitacoesConsultasDoctorBinding.inflate(layoutInflater)
     }
+
+    private lateinit var adapter: SolicitacoesConsultasAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,14 +47,42 @@ class SolicitacoesConsultasDoctorActivity : AppCompatActivity() {
             onSuccess = { consultas ->
                 Log.d("Consultas", "Número de consultas: ${consultas.size}")
                 if (consultas.isNotEmpty()) {
-                    val adapter = SolicitacoesConsultasAdapter(consultas)
-                    binding.recyclerViewSoliConsDoctor.adapter = adapter
+                    if (!::adapter.isInitialized) {
+                        adapter = SolicitacoesConsultasAdapter(consultas) { id_pedido ->
+                            aprovarConsulta(id_pedido)
+                        }
+                        binding.recyclerViewSoliConsDoctor.adapter = adapter
+                    } else {
+
+                        adapter.updateConsultas(consultas)
+                    }
+
                 } else {
-                    Log.e("Error", "Nenhuma consulta encontrada.")
+                    binding.recyclerViewSoliConsDoctor.visibility = View.GONE
+                    binding.textViewEmptyDoctor.visibility = View.VISIBLE
                 }
             },
             onError =  {errorMessage ->
                 Log.e("Error", errorMessage)
+            })
+    }
+
+    private fun aprovarConsulta(id_pedido: Int) {
+        val apiService = ApiService(this)
+
+        val sharedPreferences = getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
+        val id_user = sharedPreferences.getInt("id", -1)
+
+        apiService.approved(id_pedido, id_user,
+            onSuccess = {
+                Toast.makeText(this, "Solicitação aceita", Toast.LENGTH_SHORT).show()
+
+                getConsultas()
+
+            },
+            onError = {errorMessage ->
+                Log.e("Error", errorMessage)
+                Toast.makeText(this, "Erro ao aprovar: $errorMessage", Toast.LENGTH_SHORT).show()
             })
     }
 }

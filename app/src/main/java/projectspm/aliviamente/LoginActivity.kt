@@ -50,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
             val nome = jsonResponse.getString("nome")
             val id = jsonResponse.getInt("id")
             val tipo_user = jsonResponse.getString("tipo_user")
+            val aprovado = jsonResponse.getInt("aprovado")
             getSharedPreferences("aliviamente", Context.MODE_PRIVATE)
                 .edit()
                 .putBoolean("login", true)
@@ -59,12 +60,18 @@ class LoginActivity : AppCompatActivity() {
                 .putInt("id",id)
                 .apply()
 
-            val intent = when {
-                tipo_user == "Paciente" -> Intent(this, HomeActivity::class.java)
-                else -> Intent(this, HomeDoctorActivity::class.java)
+            if (aprovado == 1) {
+                val intent = when {
+                    tipo_user == "Paciente" -> Intent(this, HomeActivity::class.java)
+                    else -> Intent(this, HomeDoctorActivity::class.java)
+                }
+                startActivity(intent)
+                finish()
+            }else {
+                Toast.makeText(this, "Conta aguarda aprovação", Toast.LENGTH_SHORT).show()
             }
-            startActivity(intent)
-            finish()
+
+
 
 
 

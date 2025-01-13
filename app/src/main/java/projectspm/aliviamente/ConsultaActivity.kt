@@ -78,9 +78,6 @@ class ConsultaActivity : AppCompatActivity() {
         })
     }
 
-    private fun goMyProfile() {
-
-    }
 
     fun goNovaConsulta (view: View) {
         val intent = Intent(this, NovaConsultaActivity::class.java)

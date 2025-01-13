@@ -52,4 +52,9 @@ não está sozinho.</string>
     <string name="solicitar_apoio_sos">Fale com um psicólogo do SNS24 agora</string>
     <string name="chamada">Na chamada, selecione a opção 4</string>
     <string name="btn_voltar">Voltar</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="idade">Idade</string>
+    <string name="iniciar_chamada">Iniciar chamada</string>
+    <string name="datalhes_paciente">Detalhes do paciente </string>
+    <string name="seus_pacientse">Seus pacientes</string>
 </resources>
