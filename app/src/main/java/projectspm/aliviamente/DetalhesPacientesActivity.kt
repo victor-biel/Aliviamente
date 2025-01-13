@@ -25,11 +25,10 @@ class DetalhesPacientesActivity : AppCompatActivity() {
         val nome = intent.getStringExtra("nome")
         val id_consulta = intent.getIntExtra("id_consulta", -1).toString()
 
-        binding.textNomePaciente.text = nome + " " + id_consulta
         if (nome == "") {
-            binding.textNomePaciente.visibility = View.GONE
+            binding.textNomePaciente.text = id_consulta
         }else {
-            binding.textNomePaciente.text = nome
+            binding.textNomePaciente.text = nome + " " + id_consulta
         }
 
 

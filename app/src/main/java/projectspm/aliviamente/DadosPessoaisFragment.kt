@@ -1,5 +1,6 @@
 package projectspm.aliviamente
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ class DadosPessoaisFragment : Fragment() {
 
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +40,12 @@ class DadosPessoaisFragment : Fragment() {
         val email = view.findViewById<EditText>(R.id.texto_email)
         val senha = view.findViewById<EditText>(R.id.texto_password)
         val confirmarSenha = view.findViewById<EditText>(R.id.texto_conf_password)
+        val btn_voltar = view.findViewById<Button>(R.id.btn_voltar_f_c)
 
+
+        btn_voltar.setOnClickListener {
+            (activity as? RegistoActivity)?.finish()
+        }
 
 
         verifyFields(view)

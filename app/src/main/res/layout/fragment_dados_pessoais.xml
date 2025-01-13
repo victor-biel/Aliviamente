@@ -118,7 +118,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_voltar_f_c"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

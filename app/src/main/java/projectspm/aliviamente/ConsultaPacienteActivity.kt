@@ -2,6 +2,7 @@ package projectspm.aliviamente
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import projectspm.aliviamente.adapter.ConsultasAdapter
@@ -42,6 +43,7 @@ class ConsultaPacienteActivity : AppCompatActivity() {
                     binding.recyclerViewCP.adapter = adapter
 
                 }else {
+                    Toast.makeText(this, "Nenhuma consulta encontrada", Toast.LENGTH_SHORT).show()
                     Log.d("Consultas", "Nenhuma consulta encontrada.")
                 }
             }, onError = { errorMessage ->

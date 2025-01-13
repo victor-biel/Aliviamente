@@ -20,6 +20,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+
+    }
+
+    fun goCadastro(view: View) {
+        val intent = Intent(this, RegistoActivity::class.java)
+        startActivity(intent)
     }
 
 

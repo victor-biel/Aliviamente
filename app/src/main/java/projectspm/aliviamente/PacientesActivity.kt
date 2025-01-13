@@ -3,6 +3,7 @@ package projectspm.aliviamente
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -50,6 +51,7 @@ class PacientesActivity : AppCompatActivity() {
                     val adapter = PacientesAdapter(pacientes)
                     binding.recyclerViewPaciente.adapter = adapter
                 }else {
+                    Toast.makeText(this, "Nenhum paciente encontrado", Toast.LENGTH_SHORT).show()
                     Log.d("Pacientes", "Nenhum paciente encontrado.")
                 }
         }, onError = { errorMessage ->
